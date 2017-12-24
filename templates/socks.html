@@ -1,0 +1,45 @@
+{% include 'header.html' %}
+
+
+<div id="content">
+<form action="" method="post">
+
+<p>Work Mode :  <select onchange="yesnoCheck(this);" name="workmode">
+                <option value="1">Only Tor</option>
+                <option value="2">Tor + Socks5</option>
+                <option value="3">Tor + Socks5 + AUTH</option>
+                </select>
+</p>
+
+    <div id="tsocks" style="display: none;">
+        <p>IP : <input name="tsocks_ip" value="">
+        <p>PORT : <input name="tsocks_port" value=""></p>
+</div>
+
+    <div id="tsocksa" style="display: none;">
+        <p>IP : <input name="tsocksa_ip" value="">
+        <p>PORT : <input name="tsocksa_port" value="">
+        <p>Login : <input name="tsocksa_lg" value="">
+        <p>Pass : <input name="tsocksa_pw" value="">
+</div>
+        <p><input type="submit" name="submit" value="Save & Apply"></p>
+</form>
+</div>
+
+<script>
+    function yesnoCheck(that) {
+        if (that.value == "2") {
+            document.getElementById("tsocks").style.display = "block";
+        } else {
+            document.getElementById("tsocks").style.display = "none";
+        }
+         if (that.value == "3") {
+            document.getElementById("tsocksa").style.display = "block";
+        } else {
+            document.getElementById("tsocksa").style.display = "none";
+        }
+    }
+</script>
+
+
+{% include 'footer.html' %}

@@ -1,0 +1,33 @@
+{% include 'header.html' %}
+
+<div id="content">
+    <table>
+  <tr>
+    <th>System status :</th>
+    <th>{{uptime}}</th>
+  </tr>
+  <tr>
+    <td>Curent Mode</td>
+    <td>{{mode}}</td>
+  </tr>
+  <tr>
+    <td>Status TOR</td>
+    <td>{{tor_status}}</td>
+  </tr>
+  <tr>
+    <td>Status 3proxy</td>
+    <td>{{proxy_status}}</td>
+  </tr>
+  <tr>
+    <td>Status DNS proxy</td>
+    <td>{{dnsproxy_status}}</td>
+  </tr>
+  <tr>
+    <td>Status 3G</td>
+    <td>{{vwdial_status}}</td>
+  </tr>
+</table>
+
+</div>
+
+{% include 'footer.html' %}

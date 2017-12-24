@@ -1,0 +1,15 @@
+{% include 'header.html' %}
+
+<div id="content">
+    <p>Be careful when editing settings!</p>
+    <p>You can edit the fields, ssid=<b>WIFI-NAME</b> & wpa_passphrase=<b>WIFI-PASS (min 8 length)</b></p>
+    <p>After click Save | new config will be aply automatic & service hostapd will be restart.</p>
+
+
+    <form action="" method="post">
+        <p><textarea name="wifiedit" style="width: 487px; height: 261px;">{{hostapd_conf}}</textarea></p>
+        <p><input type="submit" name="submit" value="Save & Restart"></p>
+    </form>
+</div>
+
+{% include 'footer.html' %}
