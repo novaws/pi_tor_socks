@@ -47,6 +47,7 @@ def dns_edit():
 @app.route('/socks/edit', methods=['GET', 'POST'])
 def socks_edit():
     conf = ['internal 192.168.22.1','daemon', 'plugin /lib/3proxy/TransparentPlugin.ld.so transparent_plugin', 'flush','auth iponly','allow * * * *','parent 1000 socks5 127.0.0.1 9050','tcppm -i192.168.22.1 6666 127.0.0.1 11111']
+    conf2 = ['internal 192.168.22.1', 'daemon', 'plugin /lib/3proxy/TransparentPlugin.ld.so transparent_plugin', 'flush','auth iponly', 'allow * * * *','tcppm -i192.168.22.1 6666 127.0.0.1 11111']
     if request.method == 'POST' and request.form['workmode'] == '3':
         socks_ip = request.form['tsocksa_ip']
         socks_port = request.form['tsocksa_port']
@@ -67,13 +68,28 @@ def socks_edit():
         conf.insert(0, '#1')
         control.save_proxy_cfg(conf)
         control.restart_3proxy()
+    elif request.method == 'POST' and request.form['workmode'] == '4':
+        socks_ip = request.form['tsocks_ip']
+        socks_port = request.form['tsocks_port']
+        conf2.insert(0,'#4')
+        conf2.insert(7,'parent 1000 socks5 ' + socks_ip + ' ' + socks_port)
+        control.save_proxy_cfg(conf2)
+        control.restart_3proxy()
+    elif request.method == 'POST' and request.form['workmode'] == '5':
+        socks_ip = request.form['tsocksa_ip']
+        socks_port = request.form['tsocksa_port']
+        socks_login = request.form['tsocksa_lg']
+        socks_pass = request.form['tsocksa_pw']
+        conf2.insert(0,'#5')
+        conf2.insert(7,'parent 1000 socks5 ' + socks_ip + ' ' + socks_port + ' ' + socks_login + ' ' + socks_pass)
+        control.save_proxy_cfg(conf2)
+        control.restart_3proxy()
 
     return render_template('socks.html')
 
 @app.route('/system/reboot')
 def reboot():
     control.reboot_router()
-
 
 @app.route('/3g/restart')
 def restart_3g():
