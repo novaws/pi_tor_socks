@@ -8,6 +8,8 @@
                 <option value="1">Only Tor</option>
                 <option value="2">Tor + Socks5</option>
                 <option value="3">Tor + Socks5 + AUTH</option>
+                <option value="4">Only Socks5</option>
+                <option value="5">Only Socks5 + AUTH</option>
                 </select>
 </p>
 
@@ -38,6 +40,17 @@
         } else {
             document.getElementById("tsocksa").style.display = "none";
         }
+        if (that.value == "4") {
+            document.getElementById("tsocks").style.display = "block";
+        } else {
+            document.getElementById("tsocks").style.display = "none";
+        }
+        if (that.value == "5") {
+            document.getElementById("tsocksa").style.display = "block";
+        } else {
+            document.getElementById("tsocksa").style.display = "none";
+        }
+
     }
 </script>
 
