@@ -1,6 +1,5 @@
 {% include 'header.html' %}
 
-
 <div id="content">
 <form action="" method="post">
 
@@ -12,12 +11,10 @@
                 <option value="5">Only Socks5 + AUTH</option>
                 </select>
 </p>
-
     <div id="tsocks" style="display: none;">
         <p>IP : <input name="tsocks_ip" value="">
         <p>PORT : <input name="tsocks_port" value=""></p>
 </div>
-
     <div id="tsocksa" style="display: none;">
         <p>IP : <input name="tsocksa_ip" value="">
         <p>PORT : <input name="tsocksa_port" value="">
@@ -27,32 +24,19 @@
         <p><input type="submit" name="submit" value="Save & Apply"></p>
 </form>
 </div>
-
 <script>
     function yesnoCheck(that) {
-        if (that.value == "2") {
+        if (that.value == "2" || that.value == "4") {
             document.getElementById("tsocks").style.display = "block";
         } else {
             document.getElementById("tsocks").style.display = "none";
         }
-         if (that.value == "3") {
+         if (that.value == "3" || that.value == "5") {
             document.getElementById("tsocksa").style.display = "block";
         } else {
             document.getElementById("tsocksa").style.display = "none";
         }
-        if (that.value == "4") {
-            document.getElementById("tsocks").style.display = "block";
-        } else {
-            document.getElementById("tsocks").style.display = "none";
-        }
-        if (that.value == "5") {
-            document.getElementById("tsocksa").style.display = "block";
-        } else {
-            document.getElementById("tsocksa").style.display = "none";
-        }
-
     }
 </script>
-
 
 {% include 'footer.html' %}
